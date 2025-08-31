@@ -17,14 +17,11 @@ export interface NavGroup {
 
 export interface NavItem {
     title: string;
-    href: string;
+    href?: string | null; // 👈 opcional
     icon?: LucideIcon | null;
     isActive?: boolean;
-}
-
-export interface NavItemWithSubmenu extends NavItem {
-    href?: string | null;
-    submenu?: NavItem[] | null;
+    disabled?: boolean;
+    submenu?: NavItem[] | null; // 👈 recursivo
 }
 
 export interface SharedData {

@@ -2,71 +2,149 @@ import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
-import { NavItemWithSubmenu, type NavItem } from '@/types';
+import { NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { UserRoundCheck, Folder } from 'lucide-react';
-import { UserRoundPlus, Folders, LibraryBig, Files, Activity, Ellipsis } from 'lucide-react';
+import { UserRoundPlus, UserRoundSearch, Folders, Folder, FolderCheck, Files, LibraryBig, Bookmark, FileCheck2, Package, PackagePlus, PackageOpen, FolderOpen, Heart, FolderHeart, Dot, UserRoundCheck, Shield } from 'lucide-react';
 import AppLogo from './app-logo';
 
-const mainNavItems: NavItemWithSubmenu[] = [
+const mainNavItems: NavItem[] = [
     {
         title: 'Hoja de vida',
+        href: null,
         icon: UserRoundPlus,
+        isActive: false,
+        disabled: true,
         submenu: [
-            { title: 'Hojas de vida', href: '/hojas-de-vida', icon: null },
-            { title: 'Personas', href: '/persona', icon: null },
-            { title: 'Vacantes', href: '/vacantes', icon: null },
+            { title: 'Listar postulados', href: 'hoja-de-vida/postulados', icon: UserRoundSearch },
         ],
     },
     {
         title: 'Planta de cargos',
+        href: null,
         icon: Folders,
+        isActive: false,
+        disabled: false,
         submenu: [
-            { title: 'Planta de cargos', href: '/planta-de-cargos', icon: null },
-            { title: 'Agencias', href: '/agencias', icon: null },
-            { title: 'Cargos', href: '/cargos', icon: null },
-            { title: 'Departamentos', href: '/departamentos', icon: null },
-            { title: 'Funcionarios', href: '/funcionarios', icon: null },
-            { title: 'Contratos', href: '/contratos', icon: null },
+            { title: 'Gestionar planta', href: 'planta-de-cargos/planta/gestionar-planta', icon: FolderCheck },
+            { title: 'Detallado planta', href: 'planta-de-cargos/planta/detallado-planta', icon: FolderCheck },
+            {
+                title: 'Contratos',
+                href: null,
+                icon: Folder,
+                isActive: false,
+                submenu: [
+                    { title: 'Indefinidos', href: 'planta-de-cargos/contratos/indefinidos', icon: FolderOpen },
+                    { title: 'Temporales', href: 'planta-de-cargos/contratos/temporales', icon: FolderOpen },
+                ]
+            },
         ],
     },
     {
-        title: 'Acciones disciplinarias',
-        icon: LibraryBig,
+        title: 'Agencias',
+        href: null,
+        icon: Folders,
+        isActive: false,
+        disabled: false,
         submenu: [
-            { title: 'Sanciones', href: '/sanciones', icon: null },
-            { title: 'Asuntos', href: '/asuntos', icon: null },
-            { title: 'Motivos', href: '/motivos', icon: null },
+            { title: 'Gestionar agencias', href: 'agencias/gestionar-agencias', icon: Folder },
+            { title: 'Categorizacion', href: 'agencias/categorizacion', icon: Folder },
+        ]
+    },
+    {
+        title: 'Departamentos',
+        href: 'departamentos/gestionar-departamentos',
+        icon: Folders,
+        isActive: false,
+        disabled: false,
+    },
+    {
+        title: 'Cargos',
+        href: 'planta-de-cargos/cargos/gestionar-cargos',
+        icon: Folders,
+        isActive: false,
+        disabled: false,
+    },
+    {
+        title: 'Acciones disciplinarias',
+        href: null,
+        icon: LibraryBig,
+        isActive: false,
+        disabled: true,
+        submenu: [
+            { title: 'Lista de Sanciones', href: 'acciones-disciplinarias/sanciones', icon: Bookmark },
+            { title: 'Asuntos', href: 'acciones-disciplinarias/asuntos', icon: Bookmark },
+            { title: 'Motivos', href: 'acciones-disciplinarias/motivos', icon: Bookmark },
         ],
     },
     {
         title: 'Certificados',
-        href: '/certificados',
+        href: null,
         icon: Files,
-    },
-    {
-        title: 'Tamizaje',
-        icon: Activity,
+        isActive: false,
+        disabled: false,
         submenu: [
-            { title: 'tamizajes', href: '/tamizajes', icon: null },
-            { title: 'resultados', href: '/resultados', icon: null },
+            {
+                title: 'Laborales',
+                href: null,
+                icon: Files,
+                isActive: false,
+                disabled: false,
+                submenu: [
+                    { title: 'Simple', href: 'certificados/laboral/simple', icon: FileCheck2 },
+                    { title: 'Funciones', href: 'certificados/laboral/funciones', icon: FileCheck2 },
+                    { title: 'Cargos', href: 'certificados/laboral/cargos', icon: FileCheck2 },
+                    { title: 'Horarios', href: 'certificados/laboral/horarios', icon: FileCheck2 },
+                    { title: 'Tiempo', href: 'certificados/laboral/tiempo', icon: FileCheck2 },
+                ],
+            },
         ],
     },
     {
-        title: 'Mas tablas',
-        icon: Ellipsis,
+        title: 'Mas Informacion',
+        href: null,
+        icon: PackagePlus,
+        isActive: false,
+        disabled: true,
         submenu: [
-            { title: 'ARL', href: '/arl', icon: null },
-            { title: 'Bancos', href: '/bancos', icon: null },
-            { title: 'Caja de compensacion', href: '/caja-de-compensacion', icon: null },
-            { title: 'Cesantias', href: '/cesantias', icon: null },
-            { title: 'Eps', href: '/eps', icon: null },
-            { title: 'Pensiones', href: '/pensiones', icon: null },
-            { title: 'Tipos de contrato', href: '/tipos-de-contrato', icon: null },
-            { title: 'Tipos de cuenta bancaria', href: '/tipos-de-cuenta-bancaria', icon: null },
+            { title: 'ARL', href: '/arl', icon: Package },
+            { title: 'Bancos', href: '/bancos', icon: Package },
+            { title: 'Caja de compensacion', href: '/caja-de-compensacion', icon: Package },
+            { title: 'Cesantias', href: '/cesantias', icon: Package },
+            { title: 'Eps', href: '/eps', icon: Package },
+            { title: 'Pensiones', href: '/pensiones', icon: Package },
+            {
+                title: 'Tipos de...',
+                href: null,
+                icon: PackagePlus,
+                isActive: false,
+                submenu: [
+                    { title: 'contrato', href: '/tipos-de-contrato', icon: PackageOpen },
+                    { title: 'cuenta bancaria', href: '/tipos-de-cuenta-bancaria', icon: PackageOpen },
+                ],
+            },
         ],
     },
-
+    {
+        title: 'SST',
+        href: null,
+        icon: Heart,
+        isActive: false,
+        disabled: true,
+        submenu: [
+            { title: 'Gestión de Riesgos', href: 'sst/gestion-de-riesgos', icon: FolderHeart },
+            { title: 'Comité Paritario', href: 'sst/comite-paritario', icon: FolderHeart },
+            {
+                title: 'Tamizaje',
+                href: null,
+                icon: FolderHeart,
+                submenu: [
+                    { title: 'Tamizajes', href: 'sst/tamizaje/tamizajes', icon: Dot },
+                    { title: 'Resultados', href: 'sst/tamizaje/resultados', icon: Dot },
+                    { title: 'Seguimientos', href: 'sst/tamizaje/seguimientos', icon: Dot },
+                ]
+            },
+        ]
+    }
 ];
 
 const footerNavItems: NavItem[] = [
@@ -74,11 +152,13 @@ const footerNavItems: NavItem[] = [
         title: 'Usuarios',
         href: '/usuarios',
         icon: UserRoundCheck,
+        isActive: false,
     },
     {
         title: 'Roles',
         href: '/roles',
-        icon: Folder,
+        icon: Shield,
+        isActive: false,
     },
 ];
 

@@ -1,34 +1,98 @@
-# Resumen Financiero
+# Proyecto Laravel + React
 
-## Ingresos y Gastos
-- **Capacidad de Descuento**: $265,575
-- **Sueldo**: $1,710,000
-- **Gastos Fijos**: $1,200,000 (Arriendo + Servicios | Internet | Transporte)
-- **Saldo Disponible**: $510,000
-
-**Mes**: Agosto
+Este proyecto está construido con **Laravel**, **Inertia.js** y **React**.
 
 ---
 
-## Detalles de la Moto
-- **Valor de la Moto**: $7,749,999
-- **Descuento de la Moto**: $250,000
-- **Valor Final de la Moto**: $7,499,999
-- **Capital Montado (Crédito)**: $7,400,000
-- **Seguro**: $399,600
-- **Garantía**: $106,560
-- **Total (Mi Parte - Seguro + Garantía)**: $506,160
-- **Girado a Otro**: $6,893,840
-- **Mi Parte Faltante de la Moto**: $99,999
+## 🚀 Requisitos previos
+
+Asegúrate de tener instalados:
+
+- PHP >= 8.2
+- Composer
+- Node.js & npm
+- MySQL o PostgreSQL (según el caso)
 
 ---
 
-## Otros Gastos (Mi Parte)
-- **Papeles**: $750,000
-- **Seguro**: $640,000 (Check)
-- **Capitalización**: $400,000
+## ⚡ Instalación
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/usuario/nombre-repo.git
+   cd nombre-repo
+   ```
+
+2. Instala dependencias de Laravel:
+   ```bash
+   composer install
+   ```
+
+3. Instala dependencias de Node:
+   ```bash
+   npm install
+   ```
+
+4. Copia el archivo de entorno:
+   ```bash
+   cp .env.example .env
+   ```
+
+5. Genera la clave de aplicación:
+   ```bash
+   php artisan key:generate
+   ```
+
+6. Configura la base de datos en `.env` y luego ejecuta las migraciones:
+   ```bash
+   php artisan migrate
+   ```
 
 ---
 
-## Total Gastos (Mi Parte)
-**$2,396,160**
+## ▶️ Ejecución del proyecto
+
+1. Levanta el servidor de Laravel:
+   ```bash
+   php artisan serve
+   ```
+
+2. En otra terminal, inicia Vite para los assets de React:
+   ```bash
+   npm run dev
+   ```
+
+El proyecto estará disponible en:
+
+- Laravel: `http://127.0.0.1:8000`
+- Vite: `http://localhost:5173`
+
+---
+
+## 📂 Estructura del proyecto
+
+- `app/` → Código backend (Laravel)
+- `resources/js/` → Frontend en React
+- `routes/` → Rutas de Laravel e Inertia
+- `database/migrations/` → Migraciones de base de datos
+
+---
+
+## 🛠️ Comandos útiles
+
+- Ejecutar migraciones:
+  ```bash
+  php artisan migrate
+  ```
+
+- Crear un nuevo modelo con migración:
+  ```bash
+  php artisan make:model Nombre -m
+  ```
+
+- Compilar assets para producción:
+  ```bash
+  npm run build
+  ```
+
+---
