@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FuncionarioController;
+use App\Http\Controllers\ContratoController;
 
 /*
  * Rutas para la vista de usuarios (/usuarios), protegidas por los middleware 'auth' y 'verified'.
@@ -40,14 +41,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
       return Inertia::render('planta_de_cargos/agencias');
    })->name('agencias');
 
-
    Route::get('usuarios', [UserController::class, 'index'])->name('usuarios');
    Route::get('funcionarios', [FuncionarioController::class, 'index'])->name('funcionarios');
    // ========================================================================
    // planta de cargos
-   Route::get('planta-de-cargos/contratos/indefinidos', function () {
-      return Inertia::render('planta_de_cargos/contratos/indefinidos');
-   })->name('planta-de-cargos/contratos/indefinidos');
+   Route::get('planta-de-cargos/contratos/indefinidos', [ContratoController::class, 'index'])
+      ->name('planta-de-cargos/contratos/indefinidos');
 });
 
 require __DIR__ . '/settings.php';

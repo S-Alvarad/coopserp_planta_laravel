@@ -12,6 +12,7 @@ interface Funcionario {
     primer_apellido: string;
     segundo_apellido: string;
     sexo: string;
+    tipo_sangre: string;
     fecha_nacimiento: string;
     ciudad_nacimiento: string;
     direccion_residencia: string;

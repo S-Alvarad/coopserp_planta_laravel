@@ -6,6 +6,7 @@ use App\Models\Contrato;
 use Inertia\Inertia;
 use App\Http\Requests\StoreContratoRequest;
 use App\Http\Requests\UpdateContratoRequest;
+use Illuminate\Support\Facades\DB;
 
 class ContratoController extends Controller
 {
@@ -14,8 +15,12 @@ class ContratoController extends Controller
      */
     public function index()
     {
-        $contratos = Contrato::all(); // SELECT * FROM contratos
-        return Inertia::render('planta-de-cargos/contratos/indefinidos', [
+        $contratos = DB::select('
+            SELECT c.id consecutivo,c.*, f.* FROM contratos c
+            INNER JOIN funcionarios f ON c.fk_funcionario = f.cedula
+            WHERE c.fk_tipo_contrato = ?
+        ', [2]);
+        return Inertia::render('planta_de_cargos/contratos/indefinidos', [
             'contratos' => $contratos,
         ]);
     }
