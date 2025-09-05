@@ -15,7 +15,7 @@ class FuncionarioController extends Controller
     public function index()
     {
         $funcionarios = Funcionario::all(); // SELECT * FROM funcionarios
-        return Inertia::render('planta_de_cargos/funcionarios', [
+        return Inertia::render('funcionarios/gestionar_funcionarios', [
             'funcionarios' => $funcionarios,
         ]);
     }

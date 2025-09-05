@@ -17,7 +17,7 @@ import { NavItem } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
 import { ChevronRight } from 'lucide-react';
 
-function RenderNavItem({ item }: { item: NavItem }) {
+function RenderNavItem({ item, isSub = false }: { item: NavItem, isSub?: boolean }) {
    const page = usePage();
    const hasSubmenu = !!item.submenu?.length;
    const isActive = item.href ? page.url.startsWith(item.href) : !!item.isActive;
@@ -25,9 +25,11 @@ function RenderNavItem({ item }: { item: NavItem }) {
       item.isActive ||
       (hasSubmenu && item.href ? page.url.startsWith(item.href) : false);
 
+   const Wrapper = isSub ? SidebarMenuSubItem : SidebarMenuItem;
+
    return (
       <Collapsible key={item.title} defaultOpen={defaultOpen}>
-         <SidebarMenuItem>
+         <Wrapper>
             {hasSubmenu ? (
                <CollapsibleTrigger asChild disabled={item.disabled}>
                   <SidebarMenuButton
@@ -42,7 +44,6 @@ function RenderNavItem({ item }: { item: NavItem }) {
                      </div>
                   </SidebarMenuButton>
                </CollapsibleTrigger>
-
             ) : (
                <SidebarMenuButton asChild isActive={isActive} tooltip={item.title}>
                   <Link href={item.href!} prefetch>
@@ -51,39 +52,16 @@ function RenderNavItem({ item }: { item: NavItem }) {
                   </Link>
                </SidebarMenuButton>
             )}
-
             {hasSubmenu && (
                <CollapsibleContent>
                   <SidebarMenuSub>
                      {item.submenu!.map((subItem) => (
-                        <SidebarMenuSubItem key={subItem.title}>
-                           {subItem.submenu ? (
-                              <RenderNavItem item={subItem} />
-                           ) : (
-                              <SidebarMenuSubButton
-                                 asChild
-                                 isActive={page.url.startsWith(subItem.href ?? '')}
-                                 className={`${subItem.disabled ? "opacity-50 cursor-not-allowed pointer-events-none" : ""}`}
-                              >
-                                 {subItem.disabled ? (
-                                    <div className="flex items-center">
-                                       {subItem.icon && <subItem.icon />}
-                                       <span>{subItem.title}</span>
-                                    </div>
-                                 ) : (
-                                    <Link href={subItem.href!} prefetch>
-                                       {subItem.icon && <subItem.icon />}
-                                       <span>{subItem.title}</span>
-                                    </Link>
-                                 )}
-                              </SidebarMenuSubButton>
-                           )}
-                        </SidebarMenuSubItem>
+                        <RenderNavItem key={subItem.title} item={subItem} isSub />
                      ))}
                   </SidebarMenuSub>
                </CollapsibleContent>
             )}
-         </SidebarMenuItem>
+         </Wrapper>
       </Collapsible>
    );
 }

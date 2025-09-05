@@ -13,28 +13,28 @@ const mainNavItems: NavItem[] = [
         href: null,
         icon: UserRoundPlus,
         isActive: false,
-        disabled: true,
+        disabled: false,
         submenu: [
-            { title: 'Listar postulados', href: 'hoja-de-vida/postulados', icon: UserRoundSearch },
+            { title: 'Listar postulados', href: '/hoja-de-vida/postulados', icon: UserRoundSearch },
         ],
     },
     {
         title: 'Planta de cargos',
         href: null,
         icon: Folders,
-        isActive: false,
+        isActive: true,
         disabled: false,
         submenu: [
-            { title: 'Gestionar planta', href: 'planta-de-cargos/planta/gestionar-planta', icon: FolderCheck },
-            { title: 'Detallado planta', href: 'planta-de-cargos/planta/detallado-planta', icon: FolderCheck },
+            { title: 'Gestionar planta', href: '/planta-de-cargos/gestionar-planta', icon: FolderCheck },
+            { title: 'Detalle planta', href: '/planta-de-cargos/detalle-planta', icon: FolderCheck },
             {
                 title: 'Contratos',
                 href: null,
                 icon: Folder,
-                isActive: false,
+                isActive: true,
                 submenu: [
-                    { title: 'Indefinidos', href: 'planta-de-cargos/contratos/indefinidos', icon: FolderOpen },
-                    { title: 'Temporales', href: 'planta-de-cargos/contratos/temporales', icon: FolderOpen },
+                    { title: 'Indefinidos', href: '/planta-de-cargos/contratos/indefinidos', icon: FolderOpen },
+                    { title: 'Fijos', href: '/planta-de-cargos/contratos/fijos', icon: FolderOpen },
                 ]
             },
         ],
@@ -46,20 +46,27 @@ const mainNavItems: NavItem[] = [
         isActive: false,
         disabled: false,
         submenu: [
-            { title: 'Gestionar agencias', href: 'agencias/gestionar-agencias', icon: Folder },
-            { title: 'Categorizacion', href: 'agencias/categorizacion', icon: Folder },
+            { title: 'Gestionar agencias', href: '/agencias/gestionar-agencias', icon: Folder },
+            { title: 'Categorizacion', href: '/agencias/categorizacion-agencias', icon: Folder },
         ]
     },
     {
         title: 'Departamentos',
-        href: 'departamentos/gestionar-departamentos',
+        href: '/departamentos/gestionar-departamentos',
         icon: Folders,
         isActive: false,
         disabled: false,
     },
     {
         title: 'Cargos',
-        href: 'planta-de-cargos/cargos/gestionar-cargos',
+        href: '/cargos/gestionar-cargos',
+        icon: Folders,
+        isActive: false,
+        disabled: false,
+    },
+    {
+        title: 'Funcionarios',
+        href: '/funcionarios/gestionar-funcionarios',
         icon: Folders,
         isActive: false,
         disabled: false,
@@ -69,11 +76,11 @@ const mainNavItems: NavItem[] = [
         href: null,
         icon: LibraryBig,
         isActive: false,
-        disabled: true,
+        disabled: false,
         submenu: [
-            { title: 'Lista de Sanciones', href: 'acciones-disciplinarias/sanciones', icon: Bookmark },
-            { title: 'Asuntos', href: 'acciones-disciplinarias/asuntos', icon: Bookmark },
-            { title: 'Motivos', href: 'acciones-disciplinarias/motivos', icon: Bookmark },
+            { title: 'Lista de Sanciones', href: '/acciones-disciplinarias/sanciones', icon: Bookmark },
+            { title: 'Asuntos', href: '/acciones-disciplinarias/asuntos', icon: Bookmark },
+            { title: 'Motivos', href: '/acciones-disciplinarias/motivos', icon: Bookmark },
         ],
     },
     {
@@ -90,11 +97,11 @@ const mainNavItems: NavItem[] = [
                 isActive: false,
                 disabled: false,
                 submenu: [
-                    { title: 'Simple', href: 'certificados/laboral/simple', icon: FileCheck2 },
-                    { title: 'Funciones', href: 'certificados/laboral/funciones', icon: FileCheck2 },
-                    { title: 'Cargos', href: 'certificados/laboral/cargos', icon: FileCheck2 },
-                    { title: 'Horarios', href: 'certificados/laboral/horarios', icon: FileCheck2 },
-                    { title: 'Tiempo', href: 'certificados/laboral/tiempo', icon: FileCheck2 },
+                    { title: 'Simple', href: '/certificados/laboral/simple', icon: FileCheck2 },
+                    { title: 'Funciones', href: '/certificados/laboral/funciones', icon: FileCheck2 },
+                    { title: 'Cargos', href: '/certificados/laboral/cargos', icon: FileCheck2 },
+                    { title: 'Horarios', href: '/certificados/laboral/horarios', icon: FileCheck2 },
+                    { title: 'Tiempo', href: '/certificados/laboral/tiempo', icon: FileCheck2 },
                 ],
             },
         ],
@@ -104,7 +111,7 @@ const mainNavItems: NavItem[] = [
         href: null,
         icon: PackagePlus,
         isActive: false,
-        disabled: true,
+        disabled: false,
         submenu: [
             { title: 'ARL', href: '/arl', icon: Package },
             { title: 'Bancos', href: '/bancos', icon: Package },
@@ -131,16 +138,16 @@ const mainNavItems: NavItem[] = [
         isActive: false,
         disabled: true,
         submenu: [
-            { title: 'Gestión de Riesgos', href: 'sst/gestion-de-riesgos', icon: FolderHeart },
-            { title: 'Comité Paritario', href: 'sst/comite-paritario', icon: FolderHeart },
+            { title: 'Gestión de Riesgos', href: '/sst/gestion-de-riesgos', icon: FolderHeart },
+            { title: 'Comité Paritario', href: '/sst/comite-paritario', icon: FolderHeart },
             {
                 title: 'Tamizaje',
                 href: null,
                 icon: FolderHeart,
                 submenu: [
-                    { title: 'Tamizajes', href: 'sst/tamizaje/tamizajes', icon: Dot },
-                    { title: 'Resultados', href: 'sst/tamizaje/resultados', icon: Dot },
-                    { title: 'Seguimientos', href: 'sst/tamizaje/seguimientos', icon: Dot },
+                    { title: 'Tamizajes', href: '/sst/tamizaje/tamizajes', icon: Dot },
+                    { title: 'Resultados', href: '/sst/tamizaje/resultados', icon: Dot },
+                    { title: 'Seguimientos', href: '/sst/tamizaje/seguimientos', icon: Dot },
                 ]
             },
         ]
@@ -152,13 +159,13 @@ const footerNavItems: NavItem[] = [
         title: 'Usuarios',
         href: '/usuarios',
         icon: UserRoundCheck,
-        isActive: false,
+        // isActive: false,
     },
     {
         title: 'Roles',
         href: '/roles',
         icon: Shield,
-        isActive: false,
+        // isActive: false,
     },
 ];
 
