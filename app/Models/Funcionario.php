@@ -13,6 +13,7 @@ class Funcionario extends Model
     protected $table = 'funcionarios'; // Nombre de la tabla en la BD
 
     protected $fillable = [
+        'id',
         'cedula',
         'primer_nombre',
         'segundo_nombre',
